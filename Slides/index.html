@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+	<head>
+
+		<meta charset="utf-8">
+
+		<title>My CV in the form of slides</title>
+
+		<meta name="description" content="CV in Slides">
+		<meta name="author" content="Vladimir Kirov">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="kontext.css">
+		<link rel="stylesheet" href="demo.css">
+		<link rel="stylesheet" href="kontext.js">
+		
+
+	</head>
+	<body>
+
+	  <article class="kontext">
+		<div class="layer one show">
+		  <xmp>Лична информация: Владимир Илиев Киров</xmp>
+		  <br>
+		  <img src="./images/vladimir.jpg" width="228" height="228" alt="My picture" alt style="border-radius:50%">
+			<xmp> Адрес: България, гр. Асеновград, 4230, ул. Червена Скала №7, 
+Мобилен телефон: +359 896 482 336,  +359 888 455 943,</xmp>
+    <pre>E-mail:<a href="#vladimir__kirov@abv.bg">vladimir__kirov@abv.bg</a></pre>
+            <xmp> Социална мрежа/чат – Facebook, Linkedin,</xmp>                
+ Пол  Мъж | Дата на раждане 28/04/1988 | Националност българин</xmp>
+
+				
+			</div>
+			<div class="layer two">
+				<h2>Компютърни умения и компетенции:</h2>
+				
+<p>•	Microsoft Office 2007, Adobe Photoshop и интернет приложения;</p><br>
+
+
+<p>•	Свидетелство за придобита професионална квалификация<br>по специалност "Софтуерен специалист", професия "Програмист",<br> образец на МОН от ЦПО към "Информационно обслужване" АД., InfoStart - платформа за ИТ компетенции;</p><br>
+
+
+<p>•	Придобита образователно - квалификационна степен „Магистър”<br> в  Пловдивски Университет „Паисий Хилендарски”, специалност  „Финансов Мениджмънт”.</p><br>
+
+
+
+
+
+			</div>
+			<div class="layer three">
+                <h2>Копененции по следните програмни езици:</h2><br>
+                <section>
+
+
+                 <p><xmp> 
+
+
+
+                 - Обща професионална подготовка + Обща компютърна грамотност;</xmp></p><br>
+                 <p><xmp> - Programming Basics (C#);</xmp></p><br>
+                 <p><xmp> - HTML5, CSS3 & JavaScript(JQuery, JSON и AJAX);</xmp></p><br>
+                 <p><xmp> - Relational Databases (Oracle SQL, dbForge Studio for Oracle, Balsamiq, MySQL etc.);</xmp></p><br>
+                 <p><xmp> - PHP: Hypertext Preprocessor, връзка между PHP & MySQL бази от данни;</xmp></p><br>
+                 <p><xmp> - Software architecture and Design.</xmp></p><br>
+                </section>
+			</div>
+		</article>
+
+		<ul class="bullets"></ul>
+
+		<div class="share"><a href="https://www.facebook.com/vladimir.kirov.5" class="facebook-share-button" data-url="https://www.facebook.com/vladimir.kirov.5" data-text="A context-shifting page transition by @hakimel" data-size="" data-related="hakimel" data-count="none">Facebook</a></div>
+		
+		<div class="credit">by <a href="https://www.linkedin.com/profile/view?id=227028024&trk=nav_responsive_tab_profile">Vladimir Kirov</a></div>
+
+		<script src="kontext.js"></script>
+		<script>
+			// Create a new instance of kontext
+			var k = kontext( document.querySelector( '.kontext' ) );
+
+
+			// API METHODS:
+
+			// k.prev(); // Show prev layer
+			// k.next(); // Show next layer
+			// k.show( 3 ); // Show specific layer
+			// k.getIndex(); // Index of current layer
+			// k.getTotal(); // Total number of layers
+
+
+			// DEMO-SPECIFIC:
+
+			var bulletsContainer = document.body.querySelector( '.bullets' );
+
+			// Create one bullet per layer
+			for( var i = 0, len = k.getTotal(); i < len; i++ ) {
+				var bullet = document.createElement( 'li' );
+				bullet.className = i === 0 ? 'active' : '';
+				bullet.setAttribute( 'index', i );
+				bullet.onclick = function( event ) { k.show( event.target.getAttribute( 'index' ) ) };
+				bullet.ontouchstart = function( event ) { k.show( event.target.getAttribute( 'index' ) ) };
+				bulletsContainer.appendChild( bullet );
+			}
+
+			// Update the bullets when the layer changes
+			k.changed.add( function( layer, index ) {
+				var bullets = document.body.querySelectorAll( '.bullets li' );
+				for( var i = 0, len = bullets.length; i < len; i++ ) {
+					bullets[i].className = i === index ? 'active' : '';
+				}
+			} );
+
+			document.addEventListener( 'keyup', function( event ) {
+				if( event.keyCode === 37 ) k.prev();
+				if( event.keyCode === 39 ) k.next();
+			}, false );
+
+			var touchX = 0;
+			var touchConsumed = false;
+
+			document.addEventListener( 'touchstart', function( event ) {
+				touchConsumed = false;
+				lastX = event.touches[0].clientX;
+			}, false );
+
+			document.addEventListener( 'touchmove', function( event ) {
+				event.preventDefault();
+
+				if( !touchConsumed ) {
+					if( event.touches[0].clientX > lastX + 10 ) {
+						k.prev();
+						touchConsumed = true;
+					}
+					else if( event.touches[0].clientX < lastX - 10 ) {
+						k.next();
+						touchConsumed = true;
+					}
+				}
+			}, false );
+
+		</script>
+
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	</body>
+</html>
